@@ -1,5 +1,6 @@
 module "service" {
   source = "../modules/service"
 
-  environament = "staging"
+  environment = "staging"
+  system_id = "rovacc-infra"
 }
