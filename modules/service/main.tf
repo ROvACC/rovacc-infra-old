@@ -12,3 +12,13 @@ provider "google" {
   region  = "eu-west3"
   zone    = "eu-west3-a"
 }
+
+resource "google_storage_bucket" "tfstate" {
+  name          = "rovacc-tfstate-${var.environment}"
+  force_destroy = false
+  location      = "EU"
+  storage_class = "STANDARD"
+  versioning {
+    enabled = true
+  }
+}
