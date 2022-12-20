@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "google" {
-  project = "rovacc-operations"
-  region  = "eu-west3"
-  zone    = "eu-west3-a"
+  project = "{var.project}"
+  region  = "{var.region}"
+  zone    = "{var.zone}"
 }
 
 resource "google_storage_bucket" "tfstate" {
