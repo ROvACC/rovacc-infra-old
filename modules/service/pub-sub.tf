@@ -1,9 +1,7 @@
 resource "google_pubsub_topic" "rovacc_events" {
   name = "${var.system_id}-${var.environment}-events"
 
-  labels = {
-    system_id = "rovacc-infra"
-  }
+  labels = local.labels
 
   message_retention_duration = "86600s"
 }
@@ -17,7 +15,8 @@ resource "google_pubsub_subscription" "example" {
   topic = google_pubsub_topic.rovacc_events.name
 
   dead_letter_policy {
-    dead_letter_topic = google_pubsub_topic.rovacc_events_dlq.id
+    dead_letter_topic     = google_pubsub_topic.rovacc_events_dlq.id
     max_delivery_attempts = 10
   }
 }
+

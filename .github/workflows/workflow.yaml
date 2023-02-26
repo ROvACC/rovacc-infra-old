@@ -1,10 +1,12 @@
-name: "Terraform CI"
+name: "Deploy ROvACC infrastructure on GCP"
 
 on:
   push:
     branches:
       - master
   pull_request:
+    branches:
+      - master
 
 jobs:
   terraform:

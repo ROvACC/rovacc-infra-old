@@ -13,6 +13,6 @@ module "service" {
   system_id   = "rovacc-infra"
 
   project = "rovacc-operations"
-  region  = "eu-west3"
-  zone    = "eu-west3-a"
+  region  = "europe-west1"
+  zone    = "europe-west1-a"
 }
