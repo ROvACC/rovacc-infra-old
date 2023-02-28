@@ -17,7 +17,7 @@ resource "google_cloud_run_v2_service" "discord_bot" {
         value_source {
           secret_key_ref {
             secret  = google_secret_manager_secret.discord_bot_token.secret_id
-            version = "4"
+            version = var.discord_bot_token_secret_version
           }
         }
       }
@@ -32,15 +32,11 @@ resource "google_cloud_run_v2_service" "discord_bot" {
       }
     }
   }
+  depends_on = [
+    google_service_account.cloud_run_v2_service_account,
+  ]
 }
 
 resource "google_service_account" "cloud_run_v2_service_account" {
-  account_id = "cloud-run-discord-bot-${var.environment}"
+  account_id = "cr-discord-bot-${var.environment}"
 }
-
-/* resource "google_cloud_run_v2_service_iam_member" "discord_bot" { */
-/*   name     = google_cloud_run_v2_service.discord_bot.name */
-/*   location = google_cloud_run_v2_service.discord_bot.location */
-/*   role     = "roles/secretmanager.secretAccessor" */
-/*   member   = "serviceAccount:${data.google_service_account.service_account.email}" */
-/* } */

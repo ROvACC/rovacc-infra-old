@@ -11,7 +11,10 @@ module "service" {
 
   environment = "staging"
   system_id   = "rovacc-infra"
-  project     = "rovacc-operations"
-  region      = "europe-west1"
-  zone        = "europe-west1-a"
+
+  project = "rovacc-operations"
+  region  = "europe-west1"
+  zone    = "europe-west1-a"
+
+  discord_bot_token_secret_version = "4"
 }

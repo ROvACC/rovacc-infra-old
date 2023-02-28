@@ -18,3 +18,6 @@ variable "zone" {
   type = string
 }
 
+variable "discord_bot_token_secret_version" {
+  type = string
+}
